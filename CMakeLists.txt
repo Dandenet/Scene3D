@@ -21,8 +21,10 @@ set(RESOURCES res/shader.vert
 
 
 find_package(GLEW REQUIRED)
+find_package(glm REQUIRED)
 find_package(SFML COMPONENTS system window graphics CONFIG REQUIRED)
 
 
 add_executable(${PROJECT_NAME} src/main.cpp ${RESOURCES} ${GRAPHIC})
+target_include_directories(${PROJECT_NAME} INTERFACE glm)
 target_link_libraries(${PROJECT_NAME} GLEW::GLEW sfml-graphics sfml-window)

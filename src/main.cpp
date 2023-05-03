@@ -1,4 +1,5 @@
 #include <GL/glew.h>
+
 #include <SFML/Window.hpp>
 
 #include "graphics/Shader.hpp"
@@ -7,7 +8,7 @@
 
 int main()
 {
-    sf::Window window(sf::VideoMode(1280, 720), "Window");
+    sf::Window window(sf::VideoMode(1280, 720), "Scene3D");
     glewInit();
 
     graphics::Shader shader;
@@ -16,9 +17,9 @@ int main()
         return -1;
 
     graphics::Vertex vertices[3] = {
-        graphics::Vertex(graphics::Vector3D(-0.5f, -0.5f, 0.0f),    graphics::Vector3D(1.0f, 0.0f, 0.0f), graphics::Vector3D(0.5f, 0.5f, 0.5f)),
-        graphics::Vertex(graphics::Vector3D(0.0f, 0.5f, 0.0f),      graphics::Vector3D(0.0f, 1.0f, 0.0f), graphics::Vector3D(0.5f, 0.5f, 0.5f)),
-        graphics::Vertex(graphics::Vector3D(0.5f, -0.5f, 0.0f),     graphics::Vector3D(0.0f, 0.0f, 1.0f), graphics::Vector3D(0.5f, 0.5f, 0.5f)),
+        graphics::Vertex(glm::vec3(-0.5f, -0.5f, 0.0f),    glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.5f, 0.5f)),
+        graphics::Vertex(glm::vec3(0.0f, 0.5f, 0.0f),      glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.5f, 0.5f, 0.5f)),
+        graphics::Vertex(glm::vec3(0.5f, -0.5f, 0.0f),     glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.5f, 0.5f, 0.5f)),
     };
 
     graphics::Mesh mesh;

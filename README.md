@@ -8,6 +8,6 @@ Dependencies:
 - CMake
 - SFML
 - GLEW
-
+- GLM
 # Licence
 [The MIT License](https://github.com/Dandenet/Scene3D/blob/master/LICENSE)
