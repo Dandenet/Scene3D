@@ -1,4 +1,6 @@
 #include <GL/glew.h>
+#include <glm/gtc/type_ptr.hpp>
+
 #include <iostream>
 #include <fstream>
 
@@ -62,6 +64,17 @@ namespace graphics {
 			return false;
 
 		glUseProgram(m_shaderProgram);
+
+		return true;
+	}
+
+	bool Shader::setUniform(const std::string& uniform, const glm::mat4& mat)
+	{
+		GLint location = getUniformLocation(uniform);
+		if (location < 0)
+			return false;
+
+		glUniformMatrix4fv(location, 1, false, glm::value_ptr(mat));
 
 		return true;
 	}
@@ -163,6 +176,23 @@ namespace graphics {
 		glDeleteShader(fragmentShader);
 
 		return true;
+	}
+
+	int Shader::getUniformLocation(const std::string& uniform)
+	{
+		auto it = m_uniformTable.find(uniform);
+		if (it == m_uniformTable.end())
+		{
+			GLint location = glGetUniformLocation(m_shaderProgram, uniform.c_str());
+			if (location >= 0)
+			{
+				m_uniformTable.insert(std::make_pair(uniform, location));
+			}
+
+			return location;
+		}
+
+		return it->second;
 	}
 
 
