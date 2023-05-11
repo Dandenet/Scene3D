@@ -79,6 +79,17 @@ namespace graphics {
 		return true;
 	}
 
+	bool Shader::setUniform(const std::string& uniform, int32_t value)
+	{
+		GLint location = getUniformLocation(uniform);
+		if (location < 0)
+			return false;
+
+		glUniform1i(location, value);
+
+		return true;
+	}
+
 	bool Shader::getFileContent(const std::filesystem::path& filename, std::vector<char>& buffer)
 	{
 		std::ifstream file(filename);

@@ -28,6 +28,7 @@ namespace graphics {
         bool bind();
 
         bool setUniform(const std::string& uniform, const glm::mat4& mat);
+        bool setUniform(const std::string& uniform, int32_t value);
 
     private:
         uint32_t m_shaderProgram;
